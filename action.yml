@@ -1,0 +1,59 @@
+name: "alembic-drift-check"
+description: "Fail CI when your SQLAlchemy models and database schema drift out of sync."
+branding:
+  icon: "database"
+  color: "purple"
+
+inputs:
+  metadata:
+    description: "Import spec for the target MetaData or declarative Base, e.g. 'myapp.models:Base.metadata'."
+    required: true
+  database-url:
+    description: "SQLAlchemy database URL. Defaults to the DATABASE_URL env var if omitted."
+    required: false
+    default: ""
+  exclude:
+    description: "Space-separated table-name globs to ignore, e.g. \"tmp_* celery_*\"."
+    required: false
+    default: ""
+  ignore-removed:
+    description: "Set to 'true' to not treat DB objects absent from the models as drift."
+    required: false
+    default: "false"
+  generate-stub:
+    description: "Set to 'true' to print an Alembic revision-script stub for the drift."
+    required: false
+    default: "false"
+  ref:
+    description: "Git ref/branch/tag of alembic-drift-check to install."
+    required: false
+    default: "main"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install alembic-drift-check
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install "git+https://github.com/async-workflows/alembic-drift-check.git@${{ inputs.ref }}"
+
+    - name: Run drift check
+      shell: bash
+      env:
+        DATABASE_URL: ${{ inputs.database-url }}
+      run: |
+        args=(--metadata "${{ inputs.metadata }}")
+        if [ -n "${{ inputs.database-url }}" ]; then
+          args+=(--database-url "${{ inputs.database-url }}")
+        fi
+        for pattern in ${{ inputs.exclude }}; do
+          args+=(--exclude "$pattern")
+        done
+        if [ "${{ inputs.ignore-removed }}" = "true" ]; then
+          args+=(--ignore-removed)
+        fi
+        if [ "${{ inputs.generate-stub }}" = "true" ]; then
+          args+=(--generate-stub)
+        fi
+        alembic-drift-check "${args[@]}"
