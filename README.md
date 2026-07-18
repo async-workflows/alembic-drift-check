@@ -224,11 +224,11 @@ based on the URL's dialect.
 ## Further reading
 
 Background on the Alembic workflow this check plugs into:
-[Alembic async migrations and schema evolution](https://async-workflows.com/alembic-async-migrations-and-schema-evolution/),
-[autogenerating and reviewing migration scripts](https://async-workflows.com/alembic-async-migrations-and-schema-evolution/autogenerating-and-reviewing-migration-scripts/),
-[configuring Alembic with async SQLAlchemy engines](https://async-workflows.com/alembic-async-migrations-and-schema-evolution/configuring-alembic-with-async-sqlalchemy-engines/),
-[setting up `env.py` for asyncpg](https://async-workflows.com/alembic-async-migrations-and-schema-evolution/configuring-alembic-with-async-sqlalchemy-engines/setting-up-alembic-env-py-for-asyncpg/),
-and [excluding tables and schemas from autogenerate](https://async-workflows.com/alembic-async-migrations-and-schema-evolution/autogenerating-and-reviewing-migration-scripts/excluding-tables-and-schemas-from-alembic-autogenerate/).
+[Alembic async migrations and schema evolution](https://www.async-workflows.com/alembic-async-migrations-and-schema-evolution/),
+[autogenerating and reviewing migration scripts](https://www.async-workflows.com/alembic-async-migrations-and-schema-evolution/autogenerating-and-reviewing-migration-scripts/),
+[configuring Alembic with async SQLAlchemy engines](https://www.async-workflows.com/alembic-async-migrations-and-schema-evolution/configuring-alembic-with-async-sqlalchemy-engines/),
+[setting up `env.py` for asyncpg](https://www.async-workflows.com/alembic-async-migrations-and-schema-evolution/configuring-alembic-with-async-sqlalchemy-engines/setting-up-alembic-env-py-for-asyncpg/),
+and [excluding tables and schemas from autogenerate](https://www.async-workflows.com/alembic-async-migrations-and-schema-evolution/autogenerating-and-reviewing-migration-scripts/excluding-tables-and-schemas-from-alembic-autogenerate/).
 
 ## License
 

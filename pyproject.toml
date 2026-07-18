@@ -47,7 +47,7 @@ test = [
 
 [project.urls]
 Homepage = "https://github.com/async-workflows/alembic-drift-check"
-Documentation = "https://async-workflows.com"
+Documentation = "https://www.async-workflows.com"
 Issues = "https://github.com/async-workflows/alembic-drift-check/issues"
 
 [project.scripts]
